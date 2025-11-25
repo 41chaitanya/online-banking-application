@@ -1,0 +1,30 @@
+server:
+  port: 8080             # Port on which Spring Boot will run
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/onlinebankingapp # PostgreSQL DB URL
+    username: postgres                                 # DB username
+    password: 1122334455                                 # DB password
+    driver-class-name: org.postgresql.Driver          # JDBC driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update        # Automatically update DB schema based on entities
+    show-sql: true            # Prints generated SQL in console for debugging
+    properties:
+      hibernate:
+        format_sql: true      # Makes SQL output readable
+app:
+  jwt:
+    secret: "u3f9KJ83nF92mL0pQw7eX19aS8dR5vT2bY6cH4jP0zV1kN7mG3tQ9wL2sA5rD8F"
+    expiration-ms: 3600000   # 1 hour (1000 * 60 * 60)
+
+  jackson:
+    serialization:
+      indent_output: true     # Formats JSON responses nicely
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG       # Shows SQL statements
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # Shows SQL parameters
