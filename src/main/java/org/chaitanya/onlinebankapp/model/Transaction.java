@@ -39,7 +39,7 @@ public class Transaction {
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
-    private TransactionStatus status; // SUCCESS or FAILED
+    private TransactionStatus status;
 
     private String description;
 }
