@@ -1,5 +1,6 @@
 package org.chaitanya.onlinebankapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -24,14 +26,20 @@ public class Transaction {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", nullable = false)
-
+    @JsonIgnore
     private Account account;
+
     @Column(nullable = false)
     private BigDecimal amount;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TranactionType type; //  (could be enum)
+    private TransactionType type;
 
     @Column(nullable = false)
-    private Instant createdAt;
+    private LocalDateTime createdAt;
+    @Column(nullable = false)
+    private TransactionStatus status; // SUCCESS or FAILED
+
+    private String description;
 }
