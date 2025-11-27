@@ -1,4 +1,4 @@
-package org.chaitanya.onlinebankapp.config;
+package org.chaitanya.onlinebankapp.configAndSecurity;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,18 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
+
+
+                        .requestMatchers("/api/accounts/create").hasRole("USER")
+                        .requestMatchers("/api/accounts/user/**").hasAnyRole("USER", "MANAGER", "ADMIN")
+
+                        .requestMatchers("/api/accounts/{accountId}").hasAnyRole("USER","MANAGER","ADMIN")
+
+                        .requestMatchers("/api/accounts/**").hasAnyRole("MANAGER", "ADMIN")
+
+
+                        .requestMatchers("/api/accounts/delete/**").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

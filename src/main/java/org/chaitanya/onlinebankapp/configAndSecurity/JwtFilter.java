@@ -1,4 +1,4 @@
-package org.chaitanya.onlinebankapp.config;
+package org.chaitanya.onlinebankapp.configAndSecurity;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

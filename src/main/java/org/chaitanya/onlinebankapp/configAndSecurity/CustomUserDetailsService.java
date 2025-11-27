@@ -1,6 +1,5 @@
-package org.chaitanya.onlinebankapp.config;
+package org.chaitanya.onlinebankapp.configAndSecurity;
 
-import org.chaitanya.onlinebankapp.dto.RegisterRequest;
 import org.chaitanya.onlinebankapp.model.User;
 import org.chaitanya.onlinebankapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
