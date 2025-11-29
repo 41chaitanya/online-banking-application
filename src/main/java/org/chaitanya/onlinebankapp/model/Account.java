@@ -36,4 +36,11 @@ public class Account {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", transactions=" + transactions +   // <-- This causes recursion
+                '}';
+    }
 }

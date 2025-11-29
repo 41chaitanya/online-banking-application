@@ -39,7 +39,18 @@ public class Transaction {
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private TransactionStatus status;
 
     private String description;
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", status=" + status +
+                // avoid printing account fully, maybe just its id
+                ", accountId=" + (account != null ? account.getId() : null) +
+                '}';
+    }
 }
